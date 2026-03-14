@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nikah Salafi - Marriage Upon the Salafi Manhaj</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'ns-plum': '#4B2E5D',      // Reverted to Original Brand Plum
+              'ns-warmgrey': '#F3F1EE',  // Warm Grey (Stone/Sand variant)
+              'ns-sand': '#E6D3B1',      // Original Soft Sand
+              'ns-mauve': '#BFA2B8',     // Muted Mauve
+              'ns-dark': '#2B2B2B',      // Deep Text
+              'ns-white': '#FFFFFF',
+            },
+            fontFamily: {
+              serif: ['"Playfair Display"', 'serif'],
+              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            },
+            borderRadius: {
+              'xl': '0.75rem',
+              '2xl': '1rem',
+              '3xl': '1.5rem',
+              '4xl': '2rem',
+            },
+            animation: {
+              'reveal': 'reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'aura': 'aura 15s ease-in-out infinite',
+              'twinkle': 'twinkle 4s ease-in-out infinite',
+              'marquee': 'marquee 60s linear infinite',
+              'vertical-scroll': 'vertical-scroll 30s linear infinite',
+            },
+            keyframes: {
+              reveal: {
+                '0%': { opacity: 0, transform: 'translateY(20px)' },
+                '100%': { opacity: 1, transform: 'translateY(0)' },
+              },
+              aura: {
+                '0%, 100%': { transform: 'translate(0, 0) scale(1)', opacity: 0.3 },
+                '33%': { transform: 'translate(10%, -5%) scale(1.1)', opacity: 0.5 },
+                '66%': { transform: 'translate(-5%, 10%) scale(0.9)', opacity: 0.4 },
+              },
+              twinkle: {
+                '0%, 100%': { opacity: 0.2, transform: 'scale(0.8) rotate(0deg)' },
+                '50%': { opacity: 0.5, transform: 'scale(1.1) rotate(15deg)' },
+              },
+              marquee: {
+                '0%': { transform: 'translateX(0)' },
+                '100%': { transform: 'translateX(-50%)' },
+              },
+              'vertical-scroll': {
+                '0%': { transform: 'translateY(0)' },
+                '100%': { transform: 'translateY(-50%)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      .glass {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(75, 46, 93, 0.1);
+      }
+      .star-pattern {
+        background-color: #F3F1EE;
+        background-image: url("data:image/svg+xml,%3Csvg width='72' height='72' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 20 L43 37 L60 40 L43 43 L40 60 L37 43 L20 40 L37 37 Z' fill='%23E6D3B1' fill-opacity='0.2'/%3E%3C/svg%3E");
+      }
+      .success-pattern {
+        background-color: #F3F1EE;
+        background-image: url("data:image/svg+xml,%3Csvg width='108' height='108' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 30 L64 52 L85 56 L64 60 L60 82 L56 60 L35 56 L56 52 Z' fill='%234B2E5D' fill-opacity='0.03'/%3E%3C/svg%3E");
+        background-attachment: fixed;
+      }
+      html { 
+        scroll-behavior: smooth; 
+        font-size: 90%;
+      }
+      body { 
+        overflow-x: hidden;
+        color: #2B2B2B;
+        background-color: #F3F1EE;
+      }
+      
+      .btn-primary-cta {
+        background-color: #4B2E5D;
+        color: #FFFFFF !important;
+        font-weight: 700;
+        border-radius: 0.75rem;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 0.25rem 0.875rem 0 rgba(75, 46, 93, 0.2);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .btn-primary-cta:hover {
+        background-color: #5D3A74;
+        box-shadow: 0 12px 24px rgba(75, 46, 93, 0.3);
+        transform: translateY(-2px);
+      }
+      .btn-primary-cta:active {
+        transform: translateY(0) scale(0.98);
+      }
+
+      .btn-accent-cta {
+        background-color: #E6D3B1;
+        color: #4B2E5D !important;
+        font-weight: 700;
+        border-radius: 0.75rem;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 0.25rem 0.875rem 0 rgba(230, 211, 177, 0.4);
+      }
+      .btn-accent-cta:hover {
+        background-color: #dcc295;
+        box-shadow: 0 8px 25px rgba(230, 211, 177, 0.6);
+        transform: translateY(-2px);
+      }
+      
+      .text-balance { text-wrap: balance; }
+      .islamic-pattern {
+        background-image: url("data:image/svg+xml,%3Csvg width='72' height='72' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0l4 12 12 4-12 4-4 12-4-12-12-4 12-4z' fill='%234B2E5D' fill-opacity='0.04' fill-rule='evenodd'/%3E%3C/svg%3E");
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="font-sans antialiased text-ns-dark bg-ns-warmgrey">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
