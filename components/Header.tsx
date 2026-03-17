@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 interface HeaderProps {
   onOpenRegister: () => void;
@@ -8,13 +9,25 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onOpenRegister }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === '/';
 
   const navLinks = [
-    { name: 'Why Nikah Salafi', href: '#why-nikah-salafi' },
-    { name: 'How it works', href: '#the-journey' },
-    { name: 'Success Stories', href: '#success-stories' },
-    { name: 'FAQs', href: '#faq' },
+    { name: 'Why Nikah Salafi', href: '/#why-nikah-salafi' },
+    { name: 'How it works', href: '/#the-journey' },
+    { name: 'Success Stories', href: '/#success-stories' },
+    { name: 'Blog', href: '/blog', isInternal: true },
+    { name: 'FAQs', href: '/#faq' },
   ];
+
+  const handleLogoClick = () => {
+    if (isHome) {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    } else {
+      navigate('/');
+    }
+  };
 
   return (
     <header className="fixed top-0 z-[60] w-full px-4 md:px-8 py-4">
@@ -23,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenRegister }) => {
           {/* Logo */}
           <div 
             className="flex items-center gap-3 group cursor-pointer" 
-            onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+            onClick={handleLogoClick}
           >
             <div className="w-9 h-9 bg-ns-plum rounded-xl flex items-center justify-center shadow-md transition-transform group-hover:scale-105">
               <span className="text-white font-serif font-bold text-sm">NS</span>
@@ -34,13 +47,23 @@ const Header: React.FC<HeaderProps> = ({ onOpenRegister }) => {
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a 
-                key={link.name}
-                href={link.href} 
-                className="text-[10px] font-bold uppercase tracking-widest text-ns-dark/60 hover:text-ns-plum transition-colors"
-              >
-                {link.name}
-              </a>
+              link.isInternal ? (
+                <Link 
+                  key={link.name}
+                  to={link.href} 
+                  className="text-[10px] font-bold uppercase tracking-widest text-ns-dark/60 hover:text-ns-plum transition-colors"
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <a 
+                  key={link.name}
+                  href={link.href} 
+                  className="text-[10px] font-bold uppercase tracking-widest text-ns-dark/60 hover:text-ns-plum transition-colors"
+                >
+                  {link.name}
+                </a>
+              )
             ))}
           </div>
 
@@ -70,15 +93,27 @@ const Header: React.FC<HeaderProps> = ({ onOpenRegister }) => {
       >
         <div className="glass rounded-2xl p-8 shadow-2xl flex flex-col gap-6 border border-ns-sand/30">
           {navLinks.map((link) => (
-            <a 
-              key={link.name}
-              href={link.href} 
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-sm font-bold uppercase tracking-widest text-ns-plum flex items-center justify-between"
-            >
-              {link.name}
-              <ArrowRight className="w-4 h-4 opacity-30 text-ns-plum" />
-            </a>
+            link.isInternal ? (
+              <Link 
+                key={link.name}
+                to={link.href} 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-sm font-bold uppercase tracking-widest text-ns-plum flex items-center justify-between"
+              >
+                {link.name}
+                <ArrowRight className="w-4 h-4 opacity-30 text-ns-plum" />
+              </Link>
+            ) : (
+              <a 
+                key={link.name}
+                href={link.href} 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-sm font-bold uppercase tracking-widest text-ns-plum flex items-center justify-between"
+              >
+                {link.name}
+                <ArrowRight className="w-4 h-4 opacity-30 text-ns-plum" />
+              </a>
+            )
           ))}
           <button 
             onClick={() => {

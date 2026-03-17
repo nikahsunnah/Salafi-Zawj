@@ -92,7 +92,7 @@ const MockupScreen = ({ activeIndex }: { activeIndex: number }) => {
     </div>,
 
     // 3: Matching
-    <div key="screen-3" className="flex-1 flex flex-col p-6 overflow-hidden">
+    <div key="screen-3" className="flex-1 flex flex-col pt-10 px-6 overflow-hidden">
       <h4 className="text-sm font-bold text-ns-plum mb-4 px-2">Key Features</h4>
       <div className="space-y-2.5 px-2 overflow-y-auto max-h-full pb-4">
         {featureCards.map((card, idx) => (
@@ -182,37 +182,37 @@ const WaitlistSection: React.FC = () => {
             </div>
           </div>
 
-          <div className="order-2 lg:col-start-1 lg:row-span-2 relative flex justify-center lg:justify-start">
-            <div className="relative w-full max-w-[500px] flex items-center justify-start lg:pl-0 -translate-x-9 lg:translate-x-12 transition-transform duration-500">
+          <div className="order-2 lg:col-start-1 lg:row-span-2 relative flex justify-start md:justify-center lg:justify-start">
+            <div className="relative w-fit -ml-7 md:ml-0 lg:translate-x-8 transition-transform duration-500">
               <div className="absolute -inset-20 bg-ns-sand/20 blur-[100px] rounded-full"></div>
               
-              <div className="relative z-10 w-[240px] h-[480px] md:w-[270px] md:h-[550px] bg-ns-plum rounded-[3rem] p-3 shadow-[0_60px_100px_-30px_rgba(99,37,84,0.3)] border-[6px] border-ns-plum ring-1 ring-white/10 overflow-hidden shrink-0">
+              <div className="relative z-10 w-[240px] h-[480px] md:w-[270px] md:h-[550px] bg-ns-plum rounded-[3rem] p-3 shadow-[0_60px_100px_-20px_rgba(99,37,84,0.3)] border-[6px] border-ns-plum ring-1 ring-white/10 overflow-hidden shrink-0">
                 <div className="w-full h-full bg-ns-white rounded-[2.4rem] overflow-hidden relative z-20 shadow-inner">
                   <MockupScreen activeIndex={activeIndex} />
                 </div>
               </div>
 
-              <div className="absolute right-[-2.25rem] lg:right-auto lg:left-[210px] top-1/2 -translate-y-1/2 flex flex-col gap-4 w-fit z-40 transition-all duration-500">
+              <div className="absolute -right-[99px] md:-right-48 lg:-right-56 top-[115px] md:top-32 flex flex-col gap-3 md:gap-4 w-fit z-40 transition-all duration-500">
                 {featureCards.map((card, idx) => (
                   <div 
                     key={idx} 
                     onMouseEnter={() => setActiveIndex(idx)}
-                    className={`glass p-4 md:p-5 rounded-2xl transition-all duration-500 flex items-center gap-4 cursor-pointer w-[210px] md:w-auto md:max-w-[340px] border-2 border-transparent hover:border-ns-sand
+                    className={`glass p-3 md:p-4 rounded-2xl transition-all duration-500 flex items-center gap-3 md:gap-4 cursor-pointer w-[201px] md:w-[240px] lg:w-[260px] border-2 border-transparent hover:border-ns-sand
                       ${activeIndex === idx 
                         ? 'translate-x-2 md:translate-x-4 shadow-[0_30px_60px_-15px_rgba(99,37,84,0.4)] opacity-100 border-ns-plum/40 bg-ns-white z-50 scale-105' 
                         : 'translate-x-0 opacity-85 hover:opacity-100 grayscale-[0.3] hover:grayscale-0'}
                     `}
                   >
-                    <div className={`w-8 h-8 md:w-9 md:h-9 rounded-xl flex items-center justify-center shrink-0 transition-all duration-500
+                    <div className={`w-7 h-7 md:w-9 md:h-9 rounded-xl flex items-center justify-center shrink-0 transition-all duration-500
                       ${activeIndex === idx ? 'bg-ns-plum text-ns-white shadow-lg rotate-3' : 'bg-ns-warmgrey text-ns-plum/40'}
                     `}>
-                      {activeIndex === idx ? <CheckCircle2 className="w-5 h-5" /> : <Clock className="w-5 h-5" />}
+                      {activeIndex === idx ? <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" /> : <Clock className="w-4 h-4 md:w-5 md:h-5" />}
                     </div>
                     <div className="flex flex-col flex-1 overflow-hidden">
                       <h4 className={`text-[9px] md:text-[10px] font-black tracking-widest uppercase mb-0.5 transition-colors duration-500 whitespace-nowrap ${activeIndex === idx ? 'text-ns-plum' : 'text-ns-plum/60'}`}>
                         {card.title}
                       </h4>
-                      <p className={`text-[10px] md:text-[11px] leading-tight font-medium transition-colors duration-500 ${activeIndex === idx ? 'text-ns-dark' : 'text-ns-plum/40'}`}>
+                      <p className={`text-[10px] md:text-[11px] leading-tight font-medium transition-colors duration-500 line-clamp-2 ${activeIndex === idx ? 'text-ns-dark' : 'text-ns-plum/40'}`}>
                         {card.desc}
                       </p>
                     </div>
@@ -230,7 +230,7 @@ const WaitlistSection: React.FC = () => {
                 </div>
 
                 <div className="flex gap-3 mb-6">
-                  <div className="flex-1 bg-ns-warmgrey/50 border border-ns-plum/5 rounded-2xl p-3 flex items-center gap-2.5 transition-transform hover:scale-105">
+                  <div className="w-[130px] md:w-[150px] bg-ns-warmgrey/50 border border-ns-plum/5 rounded-2xl p-3 flex items-center gap-2.5 transition-transform hover:scale-105">
                     <div className="w-8 h-8 bg-white rounded-lg shadow-sm flex items-center justify-center shrink-0 overflow-hidden">
                       <img 
                         src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" 
@@ -243,7 +243,7 @@ const WaitlistSection: React.FC = () => {
                       <p className="text-[10px] font-bold text-ns-plum whitespace-nowrap leading-none">App Store</p>
                     </div>
                   </div>
-                  <div className="flex-1 bg-ns-warmgrey/50 border border-ns-plum/5 rounded-2xl p-3 flex items-center gap-2.5 transition-transform hover:scale-105">
+                  <div className="w-[130px] md:w-[150px] bg-ns-warmgrey/50 border border-ns-plum/5 rounded-2xl p-3 flex items-center gap-2.5 transition-transform hover:scale-105">
                     <div className="w-8 h-8 bg-white rounded-lg shadow-sm flex items-center justify-center shrink-0 overflow-hidden">
                       <img 
                         src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg" 

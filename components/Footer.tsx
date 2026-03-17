@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Moon, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
@@ -26,20 +27,21 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold text-ns-mauve mb-6 uppercase tracking-widest text-xs"> Quick Links</h4>
             <ul className="space-y-4 text-sm text-ns-warmgrey/60">
-              <li><a href="#the-journey" className="hover:text-ns-mauve transition-colors">Our Methodology</a></li>
-              <li><a href="#our-approach" className="hover:text-ns-mauve transition-colors">The Vetting</a></li>
-              <li><a href="#serving-the-ummah" className="hover:text-ns-mauve transition-colors">Amanah & Vision</a></li>
-              <li><a href="#" className="hover:text-ns-mauve transition-colors">Contact Support</a></li>
+              <li><a href="/#why-nikah-salafi" className="hover:text-ns-mauve transition-colors">Our Methodology</a></li>
+              <li><a href="/#the-journey" className="hover:text-ns-mauve transition-colors">The Vetting</a></li>
+              <li><a href="/#success-stories" className="hover:text-ns-mauve transition-colors">Amanah & Vision</a></li>
+              <li><a href="mailto:support@nikahsalafi.com" className="hover:text-ns-mauve transition-colors">Contact Support</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-bold text-ns-mauve mb-6 uppercase tracking-widest text-xs">Transparency</h4>
             <ul className="space-y-4 text-sm text-ns-warmgrey/60">
-              <li><a href="#" className="hover:text-ns-mauve transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-ns-mauve transition-colors">Terms of Use</a></li>
-              <li><a href="#" className="hover:text-ns-mauve transition-colors">Salafi Standards</a></li>
-              <li><a href="#" className="hover:text-ns-mauve transition-colors">Safety Tips</a></li>
+              <li><Link to="/privacy-policy" className="hover:text-ns-mauve transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/terms-of-use" className="hover:text-ns-mauve transition-colors">Terms of Use</Link></li>
+              <li><Link to="/salafi-standards" className="hover:text-ns-mauve transition-colors">Salafi Standards</Link></li>
+              <li><Link to="/safety-tips" className="hover:text-ns-mauve transition-colors">Safety Tips</Link></li>
+              <li><Link to="/refund-policy" className="hover:text-ns-mauve transition-colors">Refund Policy</Link></li>
             </ul>
           </div>
 

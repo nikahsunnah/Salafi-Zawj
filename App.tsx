@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import VisionSection from './components/VisionSection';
@@ -16,6 +17,13 @@ import FAQ from './components/FAQ';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import RegistrationModal from './components/RegistrationModal';
+import BlogListing from './pages/BlogListing';
+import BlogPost from './pages/BlogPost';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfUse from './pages/TermsOfUse';
+import SalafiStandards from './pages/SalafiStandards';
+import SafetyTips from './pages/SafetyTips';
+import RefundPolicy from './pages/RefundPolicy';
 
 const AtmosphericBackground: React.FC = () => {
   return (
@@ -32,9 +40,30 @@ const AtmosphericBackground: React.FC = () => {
   );
 };
 
+const Home: React.FC<{ onOpenRegister: () => void }> = ({ onOpenRegister }) => {
+  return (
+    <main>
+      <Hero onOpenRegister={onOpenRegister} />
+      <VisionSection />
+      <WaitlistSection />
+      <StepProcess onOpenRegister={onOpenRegister} />
+      <Approach />
+      <TrustMetrics onOpenRegister={onOpenRegister} />
+      <Testimonials />
+      <SuccessGallery onOpenRegister={onOpenRegister} />
+      <Qualifiers />
+      <Articles />
+      <FreeGuidebook />
+      <FAQ />
+      <FinalCTA onOpenRegister={onOpenRegister} />
+    </main>
+  );
+};
+
 const App: React.FC = () => {
   const [showStickyCTA, setShowStickyCTA] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const location = useLocation();
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -48,41 +77,51 @@ const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Scroll to top on route change
+  useEffect(() => {
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+    } else {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
+
   return (
     <div className="min-h-screen relative">
       <AtmosphericBackground />
-      <Header onOpenRegister={openModal} />
       
-      <main>
-        <Hero onOpenRegister={openModal} />
-        <VisionSection />
-        <WaitlistSection />
-        <StepProcess onOpenRegister={openModal} />
-        <Approach />
-        <TrustMetrics onOpenRegister={openModal} />
-        <Testimonials />
-        <SuccessGallery onOpenRegister={openModal} />
-        <Qualifiers />
-        <Articles />
-        <FreeGuidebook />
-        <FAQ />
-        <FinalCTA onOpenRegister={openModal} />
-      </main>
-
-      <Footer />
-
-      <div 
-        className={`fixed bottom-0 left-0 right-0 p-4 bg-ns-white/90 backdrop-blur-md border-t border-ns-warmgrey z-50 transition-all duration-300 transform md:hidden ${
-          showStickyCTA ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
-        }`}
-      >
-        <button 
-          onClick={openModal}
-          className="btn-primary-cta w-full py-4 text-white rounded-xl font-bold text-lg shadow-lg"
-        >
-          Find Your Match
-        </button>
-      </div>
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Header onOpenRegister={openModal} />
+            <Home onOpenRegister={openModal} />
+            <Footer />
+            <div 
+              className={`fixed bottom-0 left-0 right-0 p-4 bg-ns-white/90 backdrop-blur-md border-t border-ns-warmgrey z-50 transition-all duration-300 transform md:hidden ${
+                showStickyCTA ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+              }`}
+            >
+              <button 
+                onClick={openModal}
+                className="btn-primary-cta w-full py-4 text-white rounded-xl font-bold text-lg shadow-lg"
+              >
+                Find Your Match
+              </button>
+            </div>
+          </>
+        } />
+        <Route path="/blog" element={<BlogListing />} />
+        <Route path="/blog/:id" element={<BlogPost />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-use" element={<TermsOfUse />} />
+        <Route path="/salafi-standards" element={<SalafiStandards />} />
+        <Route path="/safety-tips" element={<SafetyTips />} />
+        <Route path="/refund-policy" element={<RefundPolicy />} />
+      </Routes>
 
       <RegistrationModal isOpen={isModalOpen} onClose={closeModal} />
     </div>

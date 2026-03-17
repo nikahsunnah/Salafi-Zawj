@@ -1,40 +1,13 @@
+
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, Clock } from 'lucide-react';
+import { blogPosts } from '../data/blogPosts';
 
-const articles = [
-  {
-    category: "Practical Guide",
-    title: "How to Involve Your Wali from Day One",
-    excerpt: "Practical steps for sisters to introduce a potential match to their guardians with adab and clarity.",
-    readTime: "6 min read",
-    image: "https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=800&auto=format&fit=crop",
-    color: "text-ns-plum",
-    bgColor: "bg-ns-warmgrey"
-  },
-  {
-    category: "Fiqh of Marriage",
-    title: "Understanding the Sunnah of An-Nazar",
-    excerpt: "A deep dive into the prophetic guidance on looking at a potential spouse and the boundaries of haya.",
-    readTime: "8 min read",
-    image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=800&auto=format&fit=crop",
-    color: "text-ns-mauve",
-    bgColor: "bg-ns-warmgrey"
-  },
-  {
-    category: "Character",
-    title: "Deen over Culture: Navigating Tribalism",
-    excerpt: "How to prioritize Islamic values when cultural expectations clash with the Sunnah path to marriage.",
-    readTime: "5 min read",
-    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=800&auto=format&fit=crop",
-    color: "text-ns-plum",
-    bgColor: "bg-ns-warmgrey"
-  }
-];
-
-const ArticleCard: React.FC<{ article: typeof articles[0] }> = ({ article }) => {
+const ArticleCard: React.FC<{ article: typeof blogPosts[0] }> = ({ article }) => {
   return (
-    <div className="group cursor-pointer">
-      <div className="relative overflow-hidden rounded-[2rem] bg-white border border-ns-warmgrey shadow-sm transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+    <Link to={`/blog/${article.id}`} className="group cursor-pointer">
+      <div className="relative overflow-hidden rounded-[2rem] bg-white border border-ns-warmgrey shadow-sm transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col">
         <div className="h-56 w-full overflow-hidden relative">
           <img 
             src={article.image} 
@@ -48,7 +21,7 @@ const ArticleCard: React.FC<{ article: typeof articles[0] }> = ({ article }) => 
             </span>
           </div>
         </div>
-        <div className="p-6">
+        <div className="p-6 flex-grow flex flex-col">
           <div className="flex items-center gap-3 mb-3 text-ns-plum/40">
             <div className="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-wider">
               <Clock className="w-3 h-3" />
@@ -66,13 +39,13 @@ const ArticleCard: React.FC<{ article: typeof articles[0] }> = ({ article }) => 
           <p className="text-ns-dark/60 text-xs leading-relaxed mb-6 line-clamp-2">
             {article.excerpt}
           </p>
-          <div className="flex items-center gap-2 text-ns-plum font-bold text-xs group-hover:gap-4 transition-all">
+          <div className="mt-auto flex items-center gap-2 text-ns-plum font-bold text-xs group-hover:gap-4 transition-all">
             Read Full Article
             <ArrowRight className="w-4 h-4 text-ns-sand" />
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -94,13 +67,13 @@ const Articles: React.FC = () => {
               Equip yourself with wisdom rooted in the Sunnah. We believe an informed seeker is a successful seeker.
             </p>
           </div>
-          <button className="px-8 py-3 bg-ns-warmgrey text-ns-plum rounded-full font-bold text-sm hover:bg-ns-plum hover:text-white transition-all shadow-sm">
+          <Link to="/blog" className="px-8 py-3 bg-ns-warmgrey text-ns-plum rounded-full font-bold text-sm hover:bg-ns-plum hover:text-white transition-all shadow-sm">
             View All Insights
-          </button>
+          </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {articles.map((article, idx) => (
-            <ArticleCard key={idx} article={article} />
+          {blogPosts.map((article) => (
+            <ArticleCard key={article.id} article={article} />
           ))}
         </div>
       </div>
